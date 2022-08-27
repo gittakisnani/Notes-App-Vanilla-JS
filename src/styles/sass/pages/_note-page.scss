@@ -1,0 +1,126 @@
+$color: $text-color;
+$tag-bg: #eeeeee;
+.note-page {
+    position: relative;
+    flex: 1;
+    @include flex-col;
+    background-color: #fff;
+    padding: 15px;
+
+    .header {
+        padding: 10px 0 20px;
+        border-bottom: 1px solid #d1d1d1;
+        @include flex;
+        align-items: center;
+
+        .path {
+            font-size: 2rem;
+            font-weight: 500;
+            flex: 1;
+            text-align: start;
+        }
+
+    }
+    .about {
+        border-bottom: 1px solid #d1d1d1;
+        padding-bottom: 20px;
+        .note-title {
+            font-size: 2.5rem;
+            margin: 8px;
+            font-weight: bold;
+        }
+
+        .about-key {
+            margin: 10px 0;
+            color: $color;
+            span {
+                margin-left: 30px;
+                color: #000;
+            }
+
+            span.tag {
+                margin-left: 0;
+                background-color: $tag-bg;
+                padding: 5px;
+                border-radius: 4px;
+                margin: 0 5px;
+                &:nth-child(1) {
+                    margin-left: 30px;
+                }
+            }
+        }
+    }
+
+    .text-decoration-transform {
+        padding: 20px 0;
+        border-bottom: 1px solid #d1d1d1;
+        @include flex;
+        align-items: center;
+        gap: 5px;
+
+
+        select {
+            border-right: 1px solid #d1d1d1;
+            padding: 0 10px 0 0 ;
+            cursor: pointer;
+        }
+
+        .text-opt {
+            @include flex;
+            justify-content: space-between;
+            flex: 1;
+            padding: 0 10px 0 5px;
+            &:not(:last-child) {
+                border-right: 1px solid #d1d1d1;
+            }
+
+            button {
+                padding: 2px;
+            }
+        }
+
+    }
+    
+    .text {
+        width: 100%;
+        flex: 1;
+        resize: none;
+        overflow-y: scroll;
+        padding: 10px 20px;
+        border-bottom: 1px solid #eee;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &:focus-within {
+            border-bottom-color: #d1d1d1;
+            outline: none;
+        }
+
+        &::-webkit-scrollbar {
+            width: 10px;             
+        }
+          
+        &::-webkit-scrollbar-track {
+        background: transparent;
+        }
+          
+        &::-webkit-scrollbar-thumb {
+            background-color: #eee;  
+            border-radius: 30px;
+        }
+    }
+}
+
+.hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+
+.active {
+    background-color: rgb(223, 235, 231);
+}

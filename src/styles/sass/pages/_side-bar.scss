@@ -1,0 +1,260 @@
+$portions-padding: 8px;
+$portions-radius: 0px;
+$portions-shadow: 0 0 10px rgba(0, 0, 0, 0.05); 
+aside {
+    background-color: $aside-bg;
+    height: 100%;
+    width: 230px;
+    padding: 15px;
+    @include flex-col;
+    justify-content: space-between;
+
+    .top {
+        .login-button {
+            display: flex;
+            align-items: center;
+            padding: $portions-padding;
+            background-color: $aside-portions-bg;
+            box-shadow: $portions-shadow;
+            border-radius: $portions-radius;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+
+            .profile-settings {
+                width: 100%;
+                padding: 10px;
+                position: absolute;
+                left: 0;
+                background-color: $aside-portions-bg;
+                display: none;
+                &.show {
+                    opacity: 1;
+                    top: 105%;
+                    display: block;
+                }
+
+                button {
+                    margin: 10px;
+                    background-color: #d1d1d1;
+                    padding: 5px 10px;
+                    float: right;
+
+                    &:disabled {
+                        background-color: beige;
+                        cursor: not-allowed;
+                    }
+                }
+
+                input {
+                    border-bottom: 1px solid #d1d1d1;
+                    padding: 10px;
+                }
+
+                .img-wrapper {
+                    margin: 10px 0;
+                    @include flex-center;
+                    gap: 10px;
+                }
+            }
+    
+            img {
+                max-width: 30px;
+                border-radius: 4px;
+            }
+    
+            .name {
+                margin: 0 20px 0 10px;
+            }
+    
+            button {
+                font-size: 1.3rem;
+                flex: 1;
+                text-align: end;
+            }
+        }
+
+        .search {
+            background-color: $aside-portions-bg;
+            padding: $portions-padding;
+            border-radius: $portions-radius;
+            box-shadow: $portions-shadow;
+            form {
+                @include full;
+                @include flex;
+
+                input {
+                    flex: 1;
+                    padding: 5px;
+                    font-size: 1.4rem;
+
+                    &::placeholder {
+                        color: rgba(0, 0, 0, 0.247);
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                    }
+
+                }
+
+                i {
+                    font-size: 1.6rem;
+                    margin-right: 10px;
+                    color: $text-color;
+                }
+            }
+        }
+    }
+
+    .medium {
+        color: $text-color;
+        flex: 1;
+        padding: 50px 0;
+        .folders {
+            @include flex-col;
+            justify-content: flex-start;
+            position: relative;
+            max-height: 250px;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                width: 12px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: #d1d1d1;
+            }
+            &::-webkit-scrollbar-track {
+                background-color: #eee;
+            }
+
+            .no-folders {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 2rem;
+                color: red;
+
+                &.hide {
+                    display: none;
+                }
+            }
+
+            .folder {
+                @include flex;
+                align-items: center;
+                padding: calc($portions-padding + 5px);
+                margin-bottom: 5px;
+                border-radius: $portions-radius;
+                position: relative;
+                cursor: pointer;
+
+                &.active {
+                    background-color: $aside-portions-bg;
+                }
+
+                &.hide {
+                    display: none;
+                }
+
+                .type-icon {
+                    margin-right: 10px;
+                }
+
+                .options {
+                    flex: 1;
+                    text-align: end;
+                    @include flex;
+                    align-items: center;
+                    justify-content: end;
+                }
+
+                .folders-options {
+                    &.hide {
+                        display: none;
+                    }
+                    position: absolute;
+                    background-color: white;
+                    left: 0;
+                    padding: 10px;
+                    @include flex-col;
+                    gap: 10px;
+
+                    button {
+                        padding: 5px;
+                        &:hover {
+                            background-color: #d1d1d1;
+                        }
+                    }
+
+                    input {
+                        padding-bottom: 10px;
+                        border-bottom: 1px solid #d1d1d1;
+                    }
+                }
+
+            }
+        }
+    }
+
+    .bottom {
+        color: $text-color;
+        .bottom-button {
+            @include flex;
+            align-items: center;
+            gap: 10px;
+            padding: $portions-padding;
+            border-radius: $portions-radius;
+            box-shadow: $portions-shadow;
+            margin-bottom: 15px;
+            background-color: $aside-portions-bg;
+        }
+    }
+}
+
+.new-folder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 20;
+
+    #close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        cursor: pointer;
+        color: red;
+    } 
+
+    input {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #d1d1d1;
+        margin: 0 20px 0 10px;
+    }
+
+    button {
+        background-color: #eeee;
+        padding: 10px;
+        width: 100%;
+        margin-top: 20px;
+        transition: all 250ms;
+         &:hover,
+         &:active,
+         &:focus {
+            background-color: #d1d1d1;
+         }
+    }
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-color: #333;
+    opacity: .7;
+    z-index: 10;
+}
